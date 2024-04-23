@@ -1,20 +1,20 @@
 # Garden
 
 <!-- badges -->
-[![cljdoc badge](https://cljdoc.org/badge/com.lambdaisland/garden)](https://cljdoc.org/d/com.lambdaisland/garden) [![Clojars Project](https://img.shields.io/clojars/v/com.lambdaisland/garden.svg)](https://clojars.org/com.lambdaisland/garden)
+[![cljdoc badge](https://cljdoc.org/badge/enterprises.wizard/garden)](https://cljdoc.org/d/enterprises.wizard/garden) [![Clojars Project](https://img.shields.io/clojars/v/enterprises.wizard/garden.svg)](https://clojars.org/enterprises.wizard/garden)
 <!-- /badges -->
 
-This repo (`lambdaisland/garden`) is a fork of the original `noprompt/garden`
+This repo (`wizard/garden`) is a fork of the original `noprompt/garden`
 repo, since the upstream repo had not had a Clojars release for some years, and
 a number of fixes and improvements had accumulated. The version found here is
-released to Clojars under the `com.lambdaisland` organization. See below for
+released to Clojars under the `enterprises.wizard` organization. See below for
 installation instructions.
 
 At the time of writing both repos are identical in functionality, but this this
 repo uses the lambdaisland project tooling for handling releases. See
 `CHANGELOG.md` for release details.
 
-Also check out [lambdaisland/ornament](https://github.com/lambdaisland/ornament)
+Also check out [lambdaisland/ornament](https://github.enterprises.wizard/ornament)
 for our styled component companion library.
 
 <!-- installation -->
@@ -23,13 +23,13 @@ for our styled component companion library.
 To use the latest release, add the following to your `deps.edn` ([Clojure CLI](https://clojure.org/guides/deps_and_cli))
 
 ```
-com.lambdaisland/garden {:mvn/version "1.5.569"}
+enterprises.wizard/garden {:mvn/version "1.5.569-SNAPSHOT"}
 ```
 
 or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
 ```
-[com.lambdaisland/garden "1.5.569"]
+[enterprises.wizard/garden "1.5.569-SNAPSHOT"]
 ```
 <!-- /installation -->
 
@@ -269,7 +269,7 @@ Please contribute!
 ## Help!
 
 This project is looking for team members who can help this project succeed!
-Specifically of interest are people who can 
+Specifically of interest are people who can
 
 * help fix bugs,
 * answer questions,

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.lambdaisland</groupId>
+  <groupId>enterprises.wizard</groupId>
   <artifactId>garden</artifactId>
-  <version>1.5.569</version>
+  <version>1.5.569-SNAPSHOT</version>
   <name>garden</name>
   <description>Release of noprompt/garden master to clojars</description>
-  <url>https://github.com/lambdaisland/garden</url>
+  <url>https://github.com/wizard-enterprises/garden</url>
   <inceptionYear>2021</inceptionYear>
   <organization>
-    <name>Lambda Island</name>
-    <url>https://lambdaisland.com</url>
+    <name>Wizard Enterprises</name>
+    <url>https://wizard.enterprises</url>
   </organization>
   <properties>
     <project class="build sourceEncoding">UTF-8</project>
@@ -22,9 +22,9 @@
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/lambdaisland/garden</url>
-    <connection>scm:git:git://github.com/lambdaisland/garden.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/lambdaisland/garden.git</developerConnection>
+    <url>https://github.com/wizard-enterprises/garden</url>
+    <connection>scm:git:git://github.com/wizard-enterprises/garden.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/wizard-enterprises/garden.git</developerConnection>
     <tag>0b5b4a69ff69b79d493112202a0ebf154b1138eb</tag>
   </scm>
   <dependencies>
