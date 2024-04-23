@@ -196,8 +196,8 @@
            (compile-helper [:.foo
                             {:color "red"}
                             (at-keyframes :id
-                                         ["0%" {:x 0}]
-                                         ["100%" {:x 1}])])))))
+                                          ["0%" {:x 0}]
+                                          ["100%" {:x 1}])]))))
 
 (deftest flag-tests
   (testing ":vendors"

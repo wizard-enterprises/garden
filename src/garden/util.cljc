@@ -134,7 +134,7 @@
   [p s]
   (let [p (to-str p)]
     (if (= \- (first p))
-      (prefix p s) 
+      (prefix p s)
       (prefix (str \- p) s))))
 
 ;; ---------------------------------------------------------------------
@@ -155,7 +155,7 @@
 (defn clip
   "Return a number such that n is no less than a and no more than b."
   [a b n]
-  (let [[a b] (if (<= a b) [a b] [b a])] 
+  (let [[a b] (if (<= a b) [a b] [b a])]
     (max a (min b n))))
 
 (defn average
