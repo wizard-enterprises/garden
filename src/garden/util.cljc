@@ -116,6 +116,11 @@
   [x]
   (and (at-rule? x) (= (:identifier x) :keyframes)))
 
+(defn at-container?
+  "True if `x` is a CSS `@container` rule."
+  [x]
+  (and (at-rule? x) (= (:identifier x) :container)))
+
 (defn at-import?
   "True if `x` is a CSS `@import` rule."
   [x]

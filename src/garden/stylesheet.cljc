@@ -72,6 +72,13 @@
   (at-rule :keyframes {:identifier identifier
                        :frames frames}))
 
+(defn at-container
+  "Create a CSS @container rule."
+  [container-name media-queries & rules]
+  (at-rule :container {:container-name container-name
+                       :media-queries media-queries
+                       :rules rules}))
+
 ;;;; ## Functions
 
 (defn rgb

@@ -23,7 +23,8 @@
 
 (defmethod print-method CSSAtRule [css-at-rule writer]
   (let [f (if (or (util/at-keyframes? css-at-rule)
-                  (util/at-media? css-at-rule))
+                  (util/at-media? css-at-rule)
+                  (util/at-container? css-at-rule))
             compiler/compile-css
             compiler/render-css)]
     (.write ^Writer writer ^String (f css-at-rule))))

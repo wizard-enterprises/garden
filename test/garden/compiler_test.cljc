@@ -6,7 +6,7 @@
       :cljs [garden.types :as types :refer [CSSFunction CSSUnit]])
    [garden.color :as color]
    [garden.compiler :refer [compile-css expand render-css]]
-   [garden.stylesheet :refer (at-import at-media at-keyframes at-supports)])
+   [garden.stylesheet :refer (at-import at-media at-keyframes at-supports at-container)])
   #?(:clj
      (:import garden.types.CSSFunction
               garden.types.CSSUnit)))
@@ -198,6 +198,12 @@
                             (at-keyframes :id
                                           ["0%" {:x 0}]
                                           ["100%" {:x 1}])]))))
+
+  (testing "@container"
+    (is (= "@container(min-width:1em){h1{x:0}}"
+           (compile-helper (at-container nil {:min-width "1em"} [:h1 {:x 0}]))))
+    (is (= "@container foo(min-width:1em){h1{x:0}}"
+           (compile-helper (at-container :foo {:min-width "1em"} [:h1 {:x 0}]))))))
 
 (deftest flag-tests
   (testing ":vendors"

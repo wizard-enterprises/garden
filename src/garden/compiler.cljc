@@ -9,7 +9,8 @@
    [garden.units :as units]
    [garden.util :as util]
    #?(:cljs
-      [garden.types :refer [CSSUnit CSSFunction CSSAtRule]]))
+      [garden.types :refer [CSSUnit CSSFunction CSSAtRule]])
+   [clojure.string :as str])
   #?(:cljs
      (:require-macros
       [garden.compiler :refer [with-media-query-context with-selector-context]]))
@@ -102,6 +103,7 @@
   (or (util/rule? x)
       (util/at-import? x)
       (util/at-media? x)
+      (util/at-container? x)
       (util/at-supports? x)
       (util/at-keyframes? x)))
 
@@ -276,6 +278,19 @@
       (CSSAtRule. :feature {:feature-queries feature-queries
                             :rules rules})
       subqueries)))
+
+;; @container expansion
+
+(defmethod expand-at-rule :container
+  [{:keys [value]}]
+  (let [{:keys [container-name media-queries rules]} value
+        media (expand-at-rule {:identifier :media :value value})]
+    (apply
+     list
+     (-> (first media)
+         (assoc :identifier :container)
+         (update :value assoc :container-name container-name))
+     (rest media))))
 
 ;; ---------------------------------------------------------------------
 ;; Stylesheet expansion
@@ -657,6 +672,17 @@
                (rule-join)
                (indent-str))
            r-brace-1))))
+
+;; @container
+
+(defmethod render-at-rule :container
+  [{:keys [value]}]
+  (let [container-name (:container-name value)]
+    (-> (render-at-rule {:identifier :media :value value})
+        (str/replace #"@media" "@container")
+        (cond-> (some? container-name)
+          (str/replace #"@container"
+                       (str "@container " (name container-name)))))))
 
 ;; ---------------------------------------------------------------------
 ;; CSSRenderer implementation
