@@ -203,7 +203,10 @@
     (is (= "@container(min-width:1em){h1{x:0}}"
            (compile-helper (at-container nil {:min-width "1em"} [:h1 {:x 0}]))))
     (is (= "@container foo(min-width:1em){h1{x:0}}"
-           (compile-helper (at-container :foo {:min-width "1em"} [:h1 {:x 0}]))))))
+           (compile-helper (at-container :foo {:min-width "1em"} [:h1 {:x 0}]))))
+    (is (= "a.foo{a:b}@container foo(min-width:1em){a.foo h1{x:0}}"
+           (compile-helper [:a.foo {:a "b"}
+                            (at-container :foo {:min-width "1em"} [:h1 {:x 0}])])))))
 
 (deftest flag-tests
   (testing ":vendors"
@@ -256,4 +259,14 @@
                               (at-media {:print true}
                                         [:b {:y 1}])))]
       (is (re-find #"@media screen\{a\{x:1\}\}" compiled))
-      (is (re-find #"@media (?:screen and print|print and screen)\{b\{y:1\}\}" compiled)))))
+      (is (re-find #"@media (?:screen and print|print and screen)\{b\{y:1\}\}" compiled))))
+
+  (testing ":media-expressions :nesting-behavior in @container"
+    (let [compiled (compile-css
+                    {:media-expressions {:nesting-behavior :merge}
+                     :pretty-print?     false}
+                    (at-container nil {:screen true}
+                                  [:a {:x 1}]
+                                  (at-container nil {:print true}
+                                                [:b {:y 1}])))]
+      (is (re-find #"@container screen\{a\{x:1\}@container (?:screen and print|print and screen)\{b\{y:1\}\}\}" compiled)))))

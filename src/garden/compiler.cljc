@@ -679,6 +679,8 @@
   [{:keys [value]}]
   (let [container-name (:container-name value)]
     (-> (render-at-rule {:identifier :media :value value})
+        (#(if (some? %) %
+              (throw (ex-info (str "failed to render @container: " (pr-str value)) {:value value}))))
         (str/replace #"@media" "@container")
         (cond-> (some? container-name)
           (str/replace #"@container"
