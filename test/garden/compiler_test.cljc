@@ -206,7 +206,10 @@
            (compile-helper (at-container :foo {:min-width "1em"} [:h1 {:x 0}]))))
     (is (= "a.foo{a:b}@container foo(min-width:1em){a.foo h1{x:0}}"
            (compile-helper [:a.foo {:a "b"}
-                            (at-container :foo {:min-width "1em"} [:h1 {:x 0}])])))))
+                            (at-container :foo {:min-width "1em"} [:h1 {:x 0}])])))
+    (is (= "a.foo{a:b}@container foo(min-width:1em){a.foo{x:0}}"
+           (compile-helper [:a.foo {:a "b"}
+                            (at-container :foo {:min-width "1em"} [:& {:x 0}])])))))
 
 (deftest flag-tests
   (testing ":vendors"
